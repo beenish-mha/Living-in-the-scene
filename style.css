@@ -1,5 +1,19 @@
-#main-section {
-    margin: 100px;
-    margin-left: 400px;
-    width: 500px;
+
+.navbar.background-color {
+    background-color: rgb(157, 147, 167);
 }
+.search-films {
+    margin-left: 300px;
+    margin-top: 40px;
+}
+.button{
+
+    background-color: rgb(157, 147, 167);
+    width: 150px;
+    text-align: center;
+}
+#location {
+    text-align: center;
+}
+
+
