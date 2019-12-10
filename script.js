@@ -1,26 +1,26 @@
-//variable location - from search field n.b. search text class may be called something else
-var location = $(".searchText").val();
-//query URL variable
-var queryURL = "https://" + location;
-//JQuery element variables
-//---------------------------//
-//what elements will we be adding?
-
-//Jquery content variables
-//---------------------------//
-//what will the content be, from the AJAX function responces
-
 //"On Click Event" listener (Search-button n.b. may be called something else)
-$(".search").on("click", function(){
-});
+function creatCardElement(data){
+  var $textElement = $("<li>").attr("class", "movie-title").text(data);
+    $(".list").append($textElement);
+}
 
-//AJAX function
+$("#search-button").on("click", function(){
+  var $movie = $("#movie-name").val();
+  console.log($movie);
+  var queryURL = "https://api.themoviedb.org/3/search/movie?api_key=0a2e111476bfd341e9cc4952d7f4e484&query=" + $movie;
+
+
+// AJAX function
 $.ajax({
-    url: queryURL,
+   url: queryURL,
     method: "GET"
   }).then(function(response) {
-    $("-----------insert HTML field-------------").text(JSON.stringify(response));
+
+// calling function to create a list of movies
+    response.results.forEach(function(element){
+      creatCardElement(element.title)}
+      );
+
   });
 
-  //Jquery appends
-  //---------------------------//
+});
