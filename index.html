@@ -6,10 +6,12 @@
     <title>Living in the scene!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     
 
   </head>
   <body>
-        <nav class="navbar background-color">
+        <!-- <nav class="navbar background-color">
         </nav> 
         <div class="search-films">
           <h1 class="title is-1">Living In The Scene</h1>
@@ -19,7 +21,53 @@
         <hr>
         <div class= "tabs is-centered">
           <h1  class="title has-text-grey-dark is-centered" >Locations</h1>
-        </div>
+        </div> -->
+
+        <nav class="navbar navbar is-light" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <a class="navbar-item">
+              <h1 class="title is-1">Living in the scene</h1>
+            </a>
         
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+        
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a class="button is-primary">
+                    <strong>Search</strong>
+                  </a>
+                  <a class="button is-light">
+                    My Films
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+
+
+        <div class="field is-grouped">
+          <p class="control is-expanded">
+            <input class="input" id="movie-name" type="text" placeholder="Find your favourite film">
+          </p>
+          <!-- <p class="control"> -->
+            <a class="button is-info" id="search-button">
+              Search
+            </a>
+          <!-- </p> -->
+        </div>
+
+        <ul class="list">
+        </ul>
+
+        
+        <script type="text/javascript" src="script.js"></script>   
   </body>
 </html>
