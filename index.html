@@ -2,70 +2,67 @@
 <html>
   <head>
     <!-- <meta charset="utf-8"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Living in the scene!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <link rel="stylesheet" href="style.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-     
+    <style>
+        .hero {
+            background: black url(images/background.jpg) center / cover;
+        }
+
+        @media (max-width:1024px){}
+        @media (max-width:812px){}
+    
+    </style>
 
   </head>
   <body>
-        <!-- <nav class="navbar background-color">
-        </nav> 
-        <div class="search-films">
-          <h1 class="title is-1">Living In The Scene</h1>
-          <button class="button is-rounded" id="search">Search</button>
-          <button class="button is-rounded" id="films">Fav Films</button>
-        </div>
-        <hr>
-        <div class= "tabs is-centered">
-          <h1  class="title has-text-grey-dark is-centered" >Locations</h1>
-        </div> -->
+      <section class="hero is-fullheight">
 
-        <nav class="navbar navbar is-light" role="navigation" aria-label="main navigation">
-          <div class="navbar-brand">
-            <a class="navbar-item">
-              <h1 class="title is-1">Living in the scene</h1>
-            </a>
-        
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
-          </div>
-        
-            <div class="navbar-end">
-              <div class="navbar-item">
-                <div class="buttons">
-                  <a class="button is-primary">
-                    <strong>Search</strong>
-                  </a>
-                  <a class="button is-light">
-                    My Films
-                  </a>
-                </div>
+          <nav class="hero-head">
+              <div class="columns is-mobile is-marginless heading has-text-weight-bold">
+                  <div class="column left">
+                      <h6 class="title is-6 navbar-item">Living in the scene</h6>
+                  </div>
+                  <div class="column right">
+                      <p class="navbar-item">My Movies</p>
+                  </div>
               </div>
+          </nav>
+
+          <div class="hero-body">
+              <section class="is-overlay has-text-centered single-spaced" style="top: 70px;">
+                  <h1 class="title is-1">Living in the scene</h1>
+                  <h2 class="subtitle is-5">Search your favourite movie so you can step into the scene and walk in the footsteps of the characters.</h2>
+                  
+                  <form class="control">
+                      <input class="input is-medium textbar" id="movie-name" type="text" placeholder="Enter Movie...">
+                      <button class="button center-button" id="search-button" type="submit">Search</button>
+                  </form>
+                  
+                  <ul class="list list-content">
+                    </ul>
+
+                </section>
             </div>
-          </div>
-        </nav>
 
+          </section>
 
-
-        <div class="field is-grouped">
+        <!-- <div class="field is-grouped">
           <p class="control is-expanded">
             <input class="input" id="movie-name" type="text" placeholder="Find your favourite film">
           </p>
-          <!-- <p class="control"> -->
+          <p class="control">
             <a class="button is-info" id="search-button">
               Search
             </a>
-          <!-- </p> -->
-        </div>
+          </p>
+        </div> -->
 
-        <ul class="list">
-        </ul>
+        
 
         
         <script type="text/javascript" src="script.js"></script>   
