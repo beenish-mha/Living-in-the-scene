@@ -26,6 +26,5 @@ function handleSubmit(event) {
     );
 
   });
-}
 
 $formElement.on("submit", handleSubmit);
