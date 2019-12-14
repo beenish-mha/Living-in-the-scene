@@ -1,6 +1,7 @@
 
 var $favFilmsArray = [];
 var $formElement = $('.control');
+
 var $myMovies =$(".moviebutton");
 var $myMoviesList;
 var faveFilms = JSON.parse(localStorage.getItem("favFilms"));
@@ -60,6 +61,7 @@ function handleMovieResponse(response) {
   }
   );
 
+
 }
 
 function getMovie(movieName) {
@@ -101,4 +103,3 @@ function listFavemovies(){
     $(".list").append($liElement);
   }
 }
-
