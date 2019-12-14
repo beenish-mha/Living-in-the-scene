@@ -1,19 +1,27 @@
 
 var $favFilmsArray = [];
 var $formElement = $('.control');
-var approve = require('approvejs');
+
+var $myMovies =$(".moviebutton");
+var $myMoviesList;
+var faveFilms = JSON.parse(localStorage.getItem("favFilms"));
+console.log("No of Fave films: "+ faveFilms.length);
+console.log("Fave films: "+ faveFilms)
+
 
 function saveToLocalStorage(response) {
-  console.log(response.title);
+  // if($myMoviesList == null)
+  // { var $favFilmsArray = [];}
+  // else {var $favFilmsArray=JSON.parse(localStorage.getItem("favFilms"))}
+  // console.log(response.title);
   //  take the IMDB Id from response and assign it to a variable//
-  var $favFilms = response.title
+  var favFilms = response.title
   var imdbID = response.imdb_id;
-  $favFilmsArray.push($favFilms);
-  window.localStorage.setItem("favFilms", $favFilmsArray);
-  console.log(imdbID);
-  getLocations(imdbID);
-  
-
+  $favFilmsArray.push(favFilms);
+  localStorage.setItem("favFilms", JSON.stringify(favFilms));
+  window.localStorage.setItem ("favFilms", JSON.stringify($favFilmsArray));
+  faveFilms.push(favFilms);
+  localStorage.setItem("favFilms", JSON.stringify(faveFilms));
 }
 function handleButtonClick(event) {
   var tmdbid = event.target.dataset.id;
@@ -53,8 +61,8 @@ function handleMovieResponse(response) {
   }
   );
 
-}
 
+}
 
 function getMovie(movieName) {
   var queryURL = "https://api.themoviedb.org/3/search/movie?api_key=0a2e111476bfd341e9cc4952d7f4e484&query=" + movieName;
@@ -65,42 +73,9 @@ function getMovie(movieName) {
   }).then(function(response) {handleMovieResponse(response)});
 }
 
-
-
 function handleSubmit(event) {
   event.preventDefault();
   var $movie = $("#movie-name").val();
-
-  // validate $movie using approvejs
-approve.value('value', rules);
-
-  var rules = {
-  required: true,
-  min: 1,
-};
-
-var result = approve.value('Movie title needs to be longer than 1 character', rules);
-  // Check approve for any errors, if errors display on page
-
-{
-  approved: false,
-  errors: [
-    'Movie title needs to be longer than 1 character'
-  ],
-  failed: [
-    'required',
-    'min'
-  ],
-}
-
-var i = result.errors.length;
-while(i--) {
-  console.log(result.errors[i]);
-}
-
-
-
-  // if no errors call get movie
   getMovie($movie);
 }
 $formElement.on("submit", handleSubmit);
@@ -111,7 +86,20 @@ function getLocations(imdbID) {
   // AJAX function
   $.ajax({
     url: queryURL3,
+    headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*"},
     method: "GET",
     dataType:"json"
   })
+}
+
+//Create fave film list
+function listFavemovies(){
+  var $liElement = $("<li>");
+  var $pElement = $("<p>");
+  for (var i = 0; i < faveFilms.length; i++){
+    var $faveFilmText = faveFilms[i];
+    $liElement.append($pElement).text($faveFilmText);
+    //where to list text
+    $(".list").append($liElement);
+  }
 }
