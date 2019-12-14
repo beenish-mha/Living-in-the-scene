@@ -1,13 +1,9 @@
 
 var $favFilmsArray = [];
 var $formElement = $('.control');
-
 var $myMovies =$(".moviebutton");
 var $myMoviesList;
-var faveFilms = JSON.parse(localStorage.getItem("favFilms"));
-// console.log("No of Fave films: "+ faveFilms.length);
-console.log("Fave films: "+ faveFilms)
-
+// var faveFilms = JSON.parse(localStorage.getItem("favFilms"));
 
 function saveToLocalStorage(response) {
   console.log(response.title);
