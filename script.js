@@ -1,16 +1,9 @@
 
 var $favFilmsArray = [];
 var $formElement = $('.control');
-<<<<<<< HEAD
-
 var $myMovies =$(".moviebutton");
 var $myMoviesList;
-var faveFilms = JSON.parse(localStorage.getItem("favFilms"));
-console.log("No of Fave films: "+ faveFilms.length);
-console.log("Fave films: "+ faveFilms)
-
-=======
->>>>>>> parent of 7f117b6... added fave films arrar, doesn't clear anymore
+// var faveFilms = JSON.parse(localStorage.getItem("favFilms"));
 
 function saveToLocalStorage(response) {
   console.log(response.title);
@@ -94,18 +87,3 @@ function getLocations(imdbID) {
     dataType:"json"
   })
 }
-<<<<<<< HEAD
-
-//Create fave film list
-function listFavemovies(){
-  var $liElement = $("<li>");
-  var $pElement = $("<p>");
-  for (var i = 0; i < faveFilms.length; i++){
-    var $faveFilmText = faveFilms[i];
-    $liElement.append($pElement).text($faveFilmText);
-    //where to list text
-    $(".list").append($liElement);
-  }
-}
-=======
->>>>>>> parent of 7f117b6... added fave films arrar, doesn't clear anymore
