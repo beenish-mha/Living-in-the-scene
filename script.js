@@ -1,6 +1,7 @@
 
 var $favFilmsArray = [];
 var $formElement = $('.control');
+<<<<<<< HEAD
 
 var $myMovies =$(".moviebutton");
 var $myMoviesList;
@@ -8,20 +9,20 @@ var faveFilms = JSON.parse(localStorage.getItem("favFilms"));
 console.log("No of Fave films: "+ faveFilms.length);
 console.log("Fave films: "+ faveFilms)
 
+=======
+>>>>>>> parent of 7f117b6... added fave films arrar, doesn't clear anymore
 
 function saveToLocalStorage(response) {
-  // if($myMoviesList == null)
-  // { var $favFilmsArray = [];}
-  // else {var $favFilmsArray=JSON.parse(localStorage.getItem("favFilms"))}
-  // console.log(response.title);
+  console.log(response.title);
   //  take the IMDB Id from response and assign it to a variable//
-  var favFilms = response.title
+  var $favFilms = response.title
   var imdbID = response.imdb_id;
-  $favFilmsArray.push(favFilms);
-  localStorage.setItem("favFilms", JSON.stringify(favFilms));
-  window.localStorage.setItem ("favFilms", JSON.stringify($favFilmsArray));
-  faveFilms.push(favFilms);
-  localStorage.setItem("favFilms", JSON.stringify(faveFilms));
+  $favFilmsArray.push($favFilms);
+  window.localStorage.setItem("favFilms", $favFilmsArray);
+  console.log(imdbID);
+  getLocations(imdbID);
+  
+
 }
 function handleButtonClick(event) {
   var tmdbid = event.target.dataset.id;
@@ -64,6 +65,7 @@ function handleMovieResponse(response) {
 
 }
 
+
 function getMovie(movieName) {
   var queryURL = "https://api.themoviedb.org/3/search/movie?api_key=0a2e111476bfd341e9cc4952d7f4e484&query=" + movieName;
   // AJAX function
@@ -72,6 +74,8 @@ function getMovie(movieName) {
     method: "GET"
   }).then(function(response) {handleMovieResponse(response)});
 }
+
+
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -86,11 +90,11 @@ function getLocations(imdbID) {
   // AJAX function
   $.ajax({
     url: queryURL3,
-    headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': "*"},
     method: "GET",
     dataType:"json"
   })
 }
+<<<<<<< HEAD
 
 //Create fave film list
 function listFavemovies(){
@@ -103,3 +107,5 @@ function listFavemovies(){
     $(".list").append($liElement);
   }
 }
+=======
+>>>>>>> parent of 7f117b6... added fave films arrar, doesn't clear anymore
