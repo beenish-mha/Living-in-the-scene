@@ -9,7 +9,9 @@ function saveToLocalStorage(response) {
   var imdbID = response.imdb_id;
   $favFilmsArray.push($favFilms);
   window.localStorage.setItem("favFilms", $favFilmsArray);
-  console.log(imdbID)
+  console.log(imdbID);
+  getLocations(imdbID);
+  
 
 }
 function handleButtonClick(event) {
@@ -70,3 +72,14 @@ function handleSubmit(event) {
   getMovie($movie);
 }
 $formElement.on("submit", handleSubmit);
+
+//third Ajax call, to retrieve filming locations:
+function getLocations(imdbID) {
+  var queryURL3 = "https://www.myapifilms.com/imdb/idIMDB?idIMDB=" + imdbID + "&token=67b14d73-182d-4e58-8ea8-df1280852d84&format=json&language=en-us&aka=0&business=0&seasons=0&seasonYear=0&technical=0&trailers=0&movieTrivia=0&awards=0&moviePhotos=0&movieVideos=0&actors=0&biography=0&uniqueName=0&filmography=0&bornDied=0&starSign=0&actorActress=0&actorTrivia=0&similarMovies=0&goofs=0&keyword=0&quotes=0&fullSize=0&companyCredits=0&filmingLocations=2&directors=1&writers=1";
+  // AJAX function
+  $.ajax({
+    url: queryURL3,
+    method: "GET",
+    dataType:"json"
+  })
+}
