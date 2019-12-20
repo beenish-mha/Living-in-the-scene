@@ -39,25 +39,23 @@ function handleButtonClick(event) {
 function creatCardElement(data, id) {
   // create elements
   var $liElement = $("<li>").attr("class", "movie-title");
-  var $pElement = $("<p>").attr("class", "title-text").text(data + " " + id);
-  var $btnElement = $("<button>").attr("class", "title-btn").attr("data-id", id).text("Add to My Movies and Look Locations")
+    var $btnElement = $("<button>").attr("class", "title-btn title-text").attr("data-id", id).text(data)
   // add on clicks
   $btnElement.on('click', handleButtonClick)
   // append elements
-  $liElement.append($pElement, $btnElement);
+  $liElement.append($btnElement);
   $(".list").append($liElement);
 }
 
 function handleMovieResponse(response) {
   console.log(response)
   // calling function to create a list of movies
-
+  var $pElement = $("<h2>").attr("class", "subtitle is-5").text("Click on your favourite FILM to see the locations ");
+  $(".second-div").append($pElement);
   response.results.forEach(function (element) {
     creatCardElement(element.title, element.id)
   }
   );
-
-
 }
 
 
