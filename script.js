@@ -7,21 +7,20 @@ var $myMovies =$(".moviebutton");
 var $myMoviesList;
 var imdbID;
 var filmLocation
-var  $favFilmsArray=[]
-// var faveFilms = JSON.parse(localStorage.getItem("favFilms"));
+console.log(localStorage.getItem("favFilms"))
+var $favFilmsArray  = JSON.parse(localStorage.getItem("favFilms"));
+console.log ($favFilmsArray)
+//var faveFilms = JSON.parse(localStorage.getItem("favFilms"));
 
 function saveToLocalStorage(response) {
-  //console.log(response.title);
   //  take the IMDB Id from response and assign it to a variable//
-  var $favFilms = response.title
+   var $favFilms = response.title
   console.log($favFilms)
   var imdbID = response.imdb_id;
   $favFilmsArray.push($favFilms);
  localStorage.setItem("favFilms",JSON.stringify($favFilmsArray));
   console.log($favFilmsArray);
-  getLocations(imdbID);
-
-}
+ }
 function handleButtonClick(event) {
   $(".list").empty();
   var tmdbid = event.target.dataset.id;
@@ -111,10 +110,12 @@ $myMovies.on("click", favList);
 
 //create the list of fav movies
 function listOfFav (){
+  if ($favFilmsArray !== null){
   $(".second-div").empty();
  for (var i = 0; i<$myMoviesList.length; i++){
   var $liEl = $("<li>").attr("class", "movie-title").text($myMoviesList[i]);
    $listElement.append($liEl)
  }
+}
 }
 
