@@ -35,7 +35,8 @@
     display: block;
     clear: both;
     margin: 0 auto;
-    
+    background-color: darkgrey;
+  
 }
 
 .center-button {
@@ -43,6 +44,8 @@
     clear: both;
     margin: 0 auto;
     margin-top: 5px;
+    background-color: rgb(100, 83, 77);
+    color: cornsilk;
 }
 
 .list-content {
@@ -54,4 +57,18 @@
 .moviebutton {
     background-color: transparent;
     border: transparent;
+}
+.movie-title, .movie-location {
+    font-weight: bold;
+    color:rgb(43, 42, 42);
+}
+.poster {
+    height: 200px;
+    width: 200px;
+}
+.title-btn {
+    
+    margin-bottom: 5px;
+    background-color: rgb(100, 83, 77);
+    color: cornsilk;
 }
