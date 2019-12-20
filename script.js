@@ -5,33 +5,20 @@ var $listElement = $(".list")
 var $formElement = $('.control');
 var $myMovies =$(".moviebutton");
 var $myMoviesList;
-<<<<<<< HEAD
 var imdbID;
 var filmLocation
-=======
 // var faveFilms = JSON.parse(localStorage.getItem("favFilms"));
->>>>>>> 7b6e091684d7ca9ba31394a351e0d94f95457cd3
 
 function saveToLocalStorage(response) {
-  if($myMoviesList == null)
-  { var $favFilmsArray = [];}
-  else {var $favFilmsArray=JSON.parse(localStorage.getItem("favFilms"))}
   console.log(response.title);
   //  take the IMDB Id from response and assign it to a variable//
-<<<<<<< HEAD
-  var favFilms = response.title
-  $favFilmsArray.push(favFilms);
-  window.localStorage.setItem ("favFilms", JSON.stringify($favFilmsArray)); 
-=======
   var $favFilms = response.title
   var imdbID = response.imdb_id;
   $favFilmsArray.push($favFilms);
-  window.localStorage.setItem("favFilms", $favFilmsArray);
+  localStorage.setItem("favFilms",$favFilmsArray);
   console.log(imdbID);
   getLocations(imdbID);
-  
 
->>>>>>> 7b6e091684d7ca9ba31394a351e0d94f95457cd3
 }
 function handleButtonClick(event) {
   $(".list").empty();
@@ -47,10 +34,6 @@ function handleButtonClick(event) {
     saveToLocalStorage(response) 
   });
 }
-
-// old code from bethan
-//=================
-
 
 //"On Click Event" listener (Search-button n.b. may be called something else)
 function creatCardElement(data, id) {
@@ -95,7 +78,7 @@ function getMovielocation(movieLocation) {
     url: queryURL,
     method: "GET"
   }).then(function(response) {
-    $(".second-div").append($("<img>").attr("src", response.data.movies[0].urlPoster))
+    $(".second-div").append($("<img>").attr("class", "poster").attr("src", response.data.movies[0].urlPoster))
     console.log(response)
     $('body').css('background-image', 'url('+response.data.movies[0].urlPoster+')');   
      var locationArray = (response.data.movies[0].filmingLocations)
@@ -109,16 +92,18 @@ function getMovielocation(movieLocation) {
 }
 
 function handleSubmit(event) {
+
   event.preventDefault();
+  $(".list").empty();
+  $(".second-div").empty();
   var $movie = $("#movie-name").val();
   getMovie($movie);
 }
 $formElement.on("submit", handleSubmit);
 
-<<<<<<< HEAD
 // empty the list on my movie click btn
-function favList(event2){
-  $myMoviesList=JSON.parse(localStorage.getItem("favFilms"))
+function favList(){
+  $myMoviesList=localStorage.getItem("favFilms")
   $(".list").empty();
   listOfFav();
 }
@@ -131,15 +116,4 @@ function listOfFav (){
    $listElement.append($liEl)
  }
 }
-=======
-//third Ajax call, to retrieve filming locations:
-function getLocations(imdbID) {
-  var queryURL3 = "https://www.myapifilms.com/imdb/idIMDB?idIMDB=" + imdbID + "&token=67b14d73-182d-4e58-8ea8-df1280852d84&format=json&language=en-us&aka=0&business=0&seasons=0&seasonYear=0&technical=0&trailers=0&movieTrivia=0&awards=0&moviePhotos=0&movieVideos=0&actors=0&biography=0&uniqueName=0&filmography=0&bornDied=0&starSign=0&actorActress=0&actorTrivia=0&similarMovies=0&goofs=0&keyword=0&quotes=0&fullSize=0&companyCredits=0&filmingLocations=2&directors=1&writers=1";
-  // AJAX function
-  $.ajax({
-    url: queryURL3,
-    method: "GET",
-    dataType:"json"
-  })
-}
->>>>>>> 7b6e091684d7ca9ba31394a351e0d94f95457cd3
+

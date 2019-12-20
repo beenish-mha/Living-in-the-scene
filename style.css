@@ -54,15 +54,12 @@
 .moviebutton {
     background-color: transparent;
     border: transparent;
-<<<<<<< HEAD
 }
 .movie-title, .movie-location {
     font-weight: bold;
     color: black;
 }
-img {
+.poster {
     height: 200px;
     width: 200px;
-=======
->>>>>>> 7b6e091684d7ca9ba31394a351e0d94f95457cd3
 }
