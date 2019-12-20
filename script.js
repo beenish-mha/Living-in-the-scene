@@ -5,8 +5,10 @@ var $listElement = $(".list")
 var $formElement = $('.control');
 var $myMovies =$(".moviebutton");
 var $myMoviesList;
+
 var imdbID;
 var filmLocation
+// var faveFilms = JSON.parse(localStorage.getItem("favFilms"));
 
 function saveToLocalStorage(response) {
   if($myMoviesList == null)
@@ -14,9 +16,17 @@ function saveToLocalStorage(response) {
   else {var $favFilmsArray=JSON.parse(localStorage.getItem("favFilms"))}
   console.log(response.title);
   //  take the IMDB Id from response and assign it to a variable//
+
   var favFilms = response.title
   $favFilmsArray.push(favFilms);
   window.localStorage.setItem ("favFilms", JSON.stringify($favFilmsArray)); 
+  var $favFilms = response.title
+  var imdbID = response.imdb_id;
+  $favFilmsArray.push($favFilms);
+  window.localStorage.setItem("favFilms", $favFilmsArray);
+  console.log(imdbID);
+  getLocations(imdbID);
+  
 }
 function handleButtonClick(event) {
   $(".list").empty();
@@ -59,6 +69,7 @@ function handleMovieResponse(response) {
   }
   );
 
+
 }
 
 
@@ -99,6 +110,7 @@ function handleSubmit(event) {
 }
 $formElement.on("submit", handleSubmit);
 
+
 // empty the list on my movie click btn
 function favList(event2){
   $myMoviesList=JSON.parse(localStorage.getItem("favFilms"))
@@ -113,4 +125,14 @@ function listOfFav (){
   var $liEl = $("<li>").attr("class", "movie-title").text($myMoviesList[i]);
    $listElement.append($liEl)
  }
+}
+//third Ajax call, to retrieve filming locations:
+function getLocations(imdbID) {
+  var queryURL3 = "https://www.myapifilms.com/imdb/idIMDB?idIMDB=" + imdbID + "&token=67b14d73-182d-4e58-8ea8-df1280852d84&format=json&language=en-us&aka=0&business=0&seasons=0&seasonYear=0&technical=0&trailers=0&movieTrivia=0&awards=0&moviePhotos=0&movieVideos=0&actors=0&biography=0&uniqueName=0&filmography=0&bornDied=0&starSign=0&actorActress=0&actorTrivia=0&similarMovies=0&goofs=0&keyword=0&quotes=0&fullSize=0&companyCredits=0&filmingLocations=2&directors=1&writers=1";
+  // AJAX function
+  $.ajax({
+    url: queryURL3,
+    method: "GET",
+    dataType:"json"
+  })
 }

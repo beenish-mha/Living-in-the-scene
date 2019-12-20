@@ -54,6 +54,7 @@
 .moviebutton {
     background-color: transparent;
     border: transparent;
+
 }
 .movie-title, .movie-location {
     font-weight: bold;
@@ -62,4 +63,6 @@
 img {
     height: 200px;
     width: 200px;
+=======
+
 }
