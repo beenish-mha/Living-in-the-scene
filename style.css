@@ -60,7 +60,7 @@
 }
 .movie-title, .movie-location {
     font-weight: bold;
-    color:cornsilk;
+    color:rgb(43, 42, 42);
 }
 .poster {
     height: 200px;

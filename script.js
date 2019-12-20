@@ -7,16 +7,18 @@ var $myMovies =$(".moviebutton");
 var $myMoviesList;
 var imdbID;
 var filmLocation
+var  $favFilmsArray=[]
 // var faveFilms = JSON.parse(localStorage.getItem("favFilms"));
 
 function saveToLocalStorage(response) {
-  console.log(response.title);
+  //console.log(response.title);
   //  take the IMDB Id from response and assign it to a variable//
   var $favFilms = response.title
+  console.log($favFilms)
   var imdbID = response.imdb_id;
   $favFilmsArray.push($favFilms);
-  localStorage.setItem("favFilms",$favFilmsArray);
-  console.log(imdbID);
+ localStorage.setItem("favFilms",JSON.stringify($favFilmsArray));
+  console.log($favFilmsArray);
   getLocations(imdbID);
 
 }
@@ -85,7 +87,7 @@ function getMovielocation(movieLocation) {
        var $liEl = $("<li>").attr("class", "movie-location").text(filmLocation);
        $listElement.append($liEl)
      }
-       //$(".hero").attr("background", response.data.movies[0].urlPoster) 
+    
   });
 }
 
@@ -101,7 +103,7 @@ $formElement.on("submit", handleSubmit);
 
 // empty the list on my movie click btn
 function favList(){
-  $myMoviesList=localStorage.getItem("favFilms")
+  $myMoviesList=JSON.parse(localStorage.getItem("favFilms"));
   $(".list").empty();
   listOfFav();
 }
@@ -109,6 +111,7 @@ $myMovies.on("click", favList);
 
 //create the list of fav movies
 function listOfFav (){
+  $(".second-div").empty();
  for (var i = 0; i<$myMoviesList.length; i++){
   var $liEl = $("<li>").attr("class", "movie-title").text($myMoviesList[i]);
    $listElement.append($liEl)
